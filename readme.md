@@ -182,7 +182,7 @@ xhr.onreadystatechange = () => {
   //.. do something
 };
 ```
-##Web request
+## Web request
 ```
 function reqListener () {
   console.log(this.responseText);
