@@ -1,3 +1,100 @@
+# React
+
+```
+import React, { useEffect, useState } from 'react';
+import { getList } from '../../services/list';
+
+import './App.css';
+import React from "react";
+import "./style.css";
+
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me
+        </button>
+      </div>
+    );
+  }
+}
+
+function Example() {
+  const [count, setCount] = useState(0);    //react hooks
+  const [age, setAge] = useState(42);
+  const [fruit, setFruit] = useState('banana');
+  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+  
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  }, [count]); // Only re-run the effect if count changes
+
+//use effect calling api
+useEffect(() => {
+    let mounted = true;
+    getList()
+      .then(items => {
+        if(mounted) {
+          setList(items)
+        }
+      })
+    return () => mounted = false;
+  }, [])
+  
+  
+  
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+export default function App() {
+  return (
+    <div>
+      <Welcome name="Sara" />
+      <p>Start editing to see some magic happen :)</p>
+
+      
+     <h1>My Grocery List</h1>
+     <ul>
+       {list.map(item => <li key={item.item}>{item.item}</li>)}
+     </ul>
+     
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
+
+```
 # Accessing DOM Elements
 
 ### DOM node overview
